@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criar Perfil | Skill Market</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header id="Pagina_Principal_Header">
+    <div class="header-group-left">
+        <img id="imgmenu" src="/images/menu.png" alt="imgmenu">
+        <a href="index.html"><img id="imglogo" src="/images/image.png" alt="logotipo do site"></a>
+    </div>
+    
+    <div class="header-group-right">
+         <li><a href="index.html">Home</a></li>
+        <li><a href="somos.html">Sobre Nós</a></li>
+        <li><a href="help.html">Help?</a></li>
+        <ul class="auth-links">
+            <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+            <li id="signin-link"><a href="signin.html">Sign In</a></li>
+        </ul>
+        <div class="perfil-container" id="profile-container" style="display: none;">
+            <li class="perfil">
+                <a href="#">
+                    <img id="imgperfil" src="/images/perfil.jpeg" alt="Imagem de perfil">
+                </a>
+                <ul class="submenu">
+                    <li><a id="view-profile-link" href="#">Acessar Perfil</a></li>
+                    <li><a id="edit-profile-link" href="#">Editar perfil</a></li>
+                    <li><a href="#">Configurações</a></li>
+                    <li><a id="logout-link" href="#">Sair (Logout)</a></li> 
+                </ul>
+            </li>
+        </div>
+    </div>
+  </header>
+
+  <section class="page2">
+    <form id="formPerfil" class="formulario-perfil">
+      <h2>Criação de Perfil</h2>
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="fullName" required>
+
+      <label for="profissao">Área de atuação / Cargo</label>
+      <input type="text" id="profissao" name="title" required>
+
+      <label for="localizacao">Localização</label>
+      <input type="text" id="localizacao" name="location">
+
+      <label for="sobre">Sobre você</label>
+      <textarea id="sobre" name="about" rows="4"></textarea>
+
+      <label for="habilidades">Habilidades (separadas por vírgula)</label>
+      <input type="text" id="habilidades" name="skills">
+
+      <label for="fotoperfil">Foto de perfil</label>
+      <input type="file" id="fotoperfil" name="profileImage" accept="image/*">
+
+      <label for="portfolioimg">Imagens do portfólio</label>
+      <input type="file" id="portfolioimg" name="portfolioImages" multiple accept="image/*">
+
+      <label for="contact_email">Email de Contato</label>
+      <input type="email" id="contact_email" name="contact_email">
+
+      <label for="phone">Telefone / WhatsApp</label>
+      <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX">
+
+      <label for="instagram_url">Link do Instagram</label>
+      <input type="url" id="instagram_url" name="instagram_url" placeholder="https://www.instagram.com/seu_usuario">
+
+      <label for="website_url">Site Pessoal / Portfólio</label>
+      <input type="url" id="website_url" name="website_url" placeholder="https://seusite.com">
+
+      <button type="submit">Salvar Perfil</button>
+    </form>
+  </section>
+
+  <footer class="foothome">
+    <p>&copy; 2025 Skill Market. Todos os direitos reservados.</p>
+  </footer>
+
+<script>
+    const formPerfil = document.getElementById('formPerfil');
+    const token = localStorage.getItem('authToken');
+    const userId = localStorage.getItem('userId');
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        if (!token || !userId) {
+            alert('Você não está logado.');
+            window.location.href = 'signin.html';
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/profile/${userId}`);
+            if (response.ok) {
+                const perfil = await response.json();
+                document.querySelector('h2').textContent = 'Editar Perfil';
+
+                document.getElementById('nome').value = perfil.full_name || '';
+                document.getElementById('profissao').value = perfil.title || '';
+                document.getElementById('localizacao').value = perfil.location || '';
+                document.getElementById('sobre').value = perfil.about || '';
+                document.getElementById('habilidades').value = perfil.skills || '';
+                document.getElementById('contact_email').value = perfil.contact_email || '';
+                document.getElementById('phone').value = perfil.phone || '';
+                document.getElementById('instagram_url').value = perfil.instagram_url || '';
+                document.getElementById('website_url').value = perfil.website_url || '';
+            }
+        } catch (error) {
+            console.log("Nenhum perfil existente encontrado, modo de criação ativado.");
+        }
+    });
+
+    formPerfil.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        // FormData agora captura todos os campos com 'name' automaticamente.
+        const formData = new FormData(formPerfil);
+
+        // A lógica de adicionar arquivos permanece a mesma.
+        const profileImageInput = document.getElementById('fotoperfil');
+        if (!profileImageInput.files[0]) {
+             formData.delete('profileImage');
+        }
+
+        const portfolioInput = document.getElementById('portfolioimg');
+        if (portfolioInput.files.length === 0) {
+            formData.delete('portfolioImages');
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/api/profile', {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${token}` },
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(data.message);
+                window.location.href = `testeperfil.html?id=${userId}`;
+            } else {
+                alert('Erro ao salvar perfil: ' + data.message);
+            }
+
+        } catch (error) {
+            console.error('Erro:', error);
+            alert('Houve um erro de comunicação com o servidor.');
+        }
+    });
+</script>
+    <script src="js/header.js"></script>
+</body>
+</html>

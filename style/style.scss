@@ -1,0 +1,689 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+$primary-color: black;
+$secondary-color: #e0e7ff;
+$text-color: #333;
+$text-light: #666;
+$font-stack: 'Inter', sans-serif;
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+
+    li {
+        list-style-type: none;
+
+        a {
+            text-decoration: none;
+
+        }
+    }
+}
+
+#Pagina_Principal_Header {
+    border-bottom: white 2px solid;
+    background-color: black;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 99vw;
+    height: 17vh;
+
+    li {
+        margin: 8px;
+        margin-right: 4vw;
+
+        a:hover {
+            color: rgb(77, 77, 190);
+        }
+
+        a {
+            font-size: 2vh;
+            color: white;
+            font-family: Cormorand, Garamond, sans-serif;
+        }
+    }
+
+}
+
+#Market {
+    margin-left: 5vw;
+}
+
+#imgmenu {
+    width: 3vw;
+    margin-right: 3vw;
+}
+
+#imglogo {
+    width: 8vw;
+    border-radius: 3vh;
+    margin-right: 32vw;
+}
+
+#imgperfil {
+    border-radius: 20vh;
+    height: 12vh;
+    border: white, 2px, solid;
+}
+
+#Home {
+    border-top: white 2px solid;
+    height: 82.5vh;
+    width: 99vw;
+    display: flex;
+    background-image: url(/images/wave.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    p {
+        text-align: justify;
+        margin-top: 12vh;
+        color: white;
+        font-family: Cormorand, Garamond;
+        font-size: 2.5vh;
+        margin-right: 8vw;
+        line-height: 3.2vh;
+
+    }
+
+    h1 {
+        margin-top: 9vh;
+        margin-left: 6vw;
+        margin-right: 6vw;
+        width: 80vw;
+        color: white;
+        font-family: Orbitron, sans-serif;
+        letter-spacing: 1.5vw;
+        line-height: 16vh;
+        font-size: 12vh;
+        font-weight: 700;
+    }
+}
+
+.foothome {
+    height: 15vh;
+    background-color: rgb(0, 0, 0);
+    border-top: white 2px solid;
+}
+
+.pessoas {
+    display: flex;
+    flex-direction: column;
+    background-image: url(/images/wave.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    border-top: white 2px solid;
+
+    article {
+        margin-bottom: 8vh;
+    }
+
+
+}
+
+.perfis {
+    display: flex;
+    flex-direction: row;
+    width: 75vw;
+    margin-top: 3vw;
+
+    img {
+        width: 45vw;
+        border-radius: 1.1vw;
+        margin-left: 12vh;
+    }
+}
+
+.text {
+
+
+    font-family: Orbitron, sans-serif;
+
+    p {
+        margin-top: 2vw;
+
+        color: white;
+        width: 50vw;
+        text-align: justify;
+    }
+
+    h1 {
+        font-size: 3vw;
+        color: white;
+    }
+
+}
+
+.perfis1 {
+    display: flex;
+    flex-direction: row;
+    width: 85vw;
+    margin-top: 3vw;
+
+    img {
+        width: 45vw;
+        border-radius: 1.1vw;
+        margin-left: 11vh;
+    }
+}
+
+.text1 {
+    margin-right: 12vh;
+    margin-left: 11vh;
+    font-family: Orbitron, sans-serif;
+
+    p {
+        margin-top: 2vw;
+
+        color: white;
+        width: 50vw;
+        text-align: justify;
+    }
+
+    h1 {
+        font-size: 3vw;
+        color: white;
+    }
+
+}
+
+.perfis2 {
+    display: flex;
+    flex-direction: row;
+    width: 75vw;
+    margin-top: 3vw;
+
+    img {
+        width: 45vw;
+        border-radius: 1.1vw;
+        margin-left: 12vh;
+    }
+}
+
+.text2 {
+
+
+    font-family: Orbitron, sans-serif;
+
+    p {
+        margin-top: 2vw;
+
+        color: white;
+        width: 50vw;
+        text-align: justify;
+    }
+
+    h1 {
+        font-size: 3vw;
+        color: white;
+    }
+
+}
+
+.form-container {
+    border-top: white 2px solid;
+    background-image: url(/images/wave.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 83vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        color: white;
+        font-family: Orbitron;
+        font-size: 5vh;
+        margin-bottom: 3vh;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 4vh 4vw;
+        border-radius: 2vh;
+
+        input {
+            padding: 1.2vh 2vw;
+            border-radius: 1vh;
+            border: none;
+            font-size: 2vh;
+            width: 40vw;
+        }
+
+        button {
+            background-color: rgb(77, 77, 190);
+            color: white;
+            font-family: Roboto Mono;
+            border: none;
+            padding: 1.5vh;
+            font-size: 2.2vh;
+            border-radius: 1vh;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgb(57, 57, 150);
+            }
+        }
+    }
+}
+
+.faq {
+    border-top: white 2px solid;
+    padding: 4vh 6vw;
+    background-image: url(/images/wave.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 73vh;
+    color: white;
+    font-family: Cormorant, Garamond;
+
+    h2 {
+        font-size: 6vh;
+        font-family: Orbitron;
+        margin-bottom: 4vh;
+    }
+
+    .faq-item {
+        margin-bottom: 4vh;
+
+        h3 {
+            font-size: 3vh;
+            margin-bottom: 1vh;
+            color: rgb(179, 179, 255);
+        }
+
+        p {
+            font-size: 2.2vh;
+            text-align: justify;
+        }
+    }
+}
+
+
+.perfil-content {
+    background-image: url(/images/wave.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 5vh 10vw;
+    font-family: "Cormorant Garamond", serif;
+
+    .perfil-detalhes {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5vh;
+
+        .foto-perfil {
+            width: 20vw;
+            height: auto;
+            border-radius: 50%;
+            margin-right: 5vw;
+            border: 3px solid white;
+        }
+
+        .info-usuario {
+            h2 {
+                font-size: 4vh;
+                margin-bottom: 2vh;
+            }
+
+            p {
+                font-size: 2.2vh;
+                margin-bottom: 3vh;
+                max-width: 40vw;
+            }
+
+            .btn-personalizar {
+                padding: 1vh 3vw;
+                background-color: rgb(77, 77, 190);
+                border: none;
+                color: white;
+                font-size: 2vh;
+                cursor: pointer;
+                border-radius: 1vh;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: rgb(100, 100, 220);
+                }
+            }
+        }
+    }
+
+    .perfil-servicos {
+        h3 {
+            font-size: 3vh;
+            margin-bottom: 2vh;
+        }
+
+        ul {
+            list-style: none;
+
+            li {
+                font-size: 2vh;
+                margin-bottom: 1vh;
+            }
+        }
+    }
+}
+
+body {
+    font-family: $font-stack;
+    margin: 0;
+    padding: 0;
+    background-image: url(/images/wave.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.perfil-topo {
+    display: flex;
+    flex-direction: row;
+}
+
+.habilidades {
+    ul {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.page {
+    background-color: rgb(0, 0, 0);
+    height: 70vw;
+    margin-left: 10vw;
+    margin-top: 5vh;
+    margin-right: 10vw;
+    border: white 2px solid;
+
+    .perfil-topo {
+        display: flex;
+        flex-direction: row;
+
+        .foto-perfil {
+            height: 15vw;
+            width: 15vw;
+            border-radius: 10vw;
+            border: white 2px solid;
+            margin: 3vw;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+
+            p {
+                margin-left: 1vw;
+            }
+
+            h2 {
+                margin-bottom: 2vw;
+            }
+        }
+    }
+
+    .sobre {
+        color: white;
+        margin-left: 3vw;
+        margin-right: 3vw;
+        p{
+            margin-top: 1vw;
+            margin-left: 1vw;
+        }
+        h3{
+            margin-top: 1vw;
+        }
+    }
+
+    .habilidades {
+        color: white;
+        margin-left: 3vw;
+        margin-right: 3vw;
+         ul{
+            margin-top: 1vw;
+            margin-left: 1vw;
+            li{
+                margin-left: 1vw;
+            }
+        }
+        h3{
+            margin-top: 1vw;
+        }
+    }
+
+    .portfolio {
+        display: flex;
+        color: white;
+        margin-left: 3vw;
+        margin-right: 3vw;
+        flex-direction: column;
+        h3{
+            margin-top: 1vw;
+        }
+
+        .galeria {
+            display: flex;
+            flex-direction: row;
+
+            img {
+                height: 14vw;
+                width: 16vw;
+                margin: 2vw;
+            }
+        }
+    }
+    .contato{
+         
+        margin-left: 3vw;
+        margin-right: 3vw;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        div{
+            color: white;
+        display: flex;
+        flex-direction: row;
+          img{
+            height: 3vw;
+            width: 3vw;
+        }
+        p{
+            margin: 1vw;
+        }
+        a{
+            margin: 1vw;
+        }
+        }
+      
+    }
+}
+
+
+.formulario-perfil {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 4vw;
+  font-family: 'Inter', sans-serif;
+ .page1{
+      background-color: rgb(0, 0, 0);
+    height: 75vw;
+    margin-left: 10vw;
+    margin-top: 5vh;
+    margin-right: 10vw;
+    border: white 2px solid;
+ }
+  h2 {
+    margin-bottom: 2vw;
+    font-size: 2.5vw;
+    color: white;
+  }
+
+  label {
+    margin-top: 1.5vw;
+    margin-bottom: 0.5vw;
+    font-weight: 600;
+  }
+
+  input, textarea {
+    padding: 1vw;
+    border: none;
+    border-radius: 0.5vw;
+    background-color: #222;
+    color: white;
+    font-size: 1vw;
+    width: 50%;
+    resize: vertical;
+  }
+
+  button {
+    margin-top: 3vw;
+    width: 30%;
+    padding: 1vw;
+    background-color: #4444aa;
+    color: white;
+    border: none;
+    border-radius: 1vw;
+    font-size: 1.2vw;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #6666cc;
+    }
+  }
+}
+.page2{
+      background-color: rgb(0, 0, 0);
+    height: 95vw;
+    margin-left: 10vw;
+    margin-top: 5vh;
+    margin-right: 10vw;
+    border: white 2px solid;
+}
+.perfil-container {
+  position: relative;
+
+  .perfil-principal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background-color: #000;
+    border-radius: 5px;
+    min-width: 200px;
+    z-index: 2000;
+    padding: 5px 0;
+
+    a {
+      display: block;
+      padding: 10px 15px;
+      color: white;
+      text-decoration: none;
+      white-space: nowrap;
+
+      &:hover {
+        background: rgb(76, 0, 128);
+      }
+    }
+  }
+
+  .perfil-container {
+  position: relative; // Essencial para o posicionamento do submenu
+
+  .submenu {
+    display: none !important; 
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background-color: #000;
+    border-radius: 5px;
+    min-width: 200px;
+    z-index: 2000;
+    padding: 5px 0;
+    border: 1px solid #333;
+
+    a {
+      display: block;
+      padding: 10px 15px;
+      white-space: nowrap;
+
+      &:hover {
+        background: rgb(76, 0, 128);
+      }
+    }
+  }
+
+  // A MÁGICA ACONTECE AQUI:
+  // Quando o mouse passar por CIMA de qualquer coisa dentro de .perfil-container...
+  &:hover {
+    // ...o .submenu que for filho direto dele ficará visível.
+    > .submenu, .perfil > .submenu, .perfil-principal > .perfil > .submenu {
+      display: block;
+    }
+  }
+}
+
+// Para garantir que a imagem de perfil e os links sejam visíveis
+#imgperfil {
+    border-radius: 50%;
+    height: 10vh; // Ajuste conforme necessário
+    max-height: 60px;
+    border: 2px solid white;
+}
+
+.perfil-principal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+}
+#Pagina_Principal_Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+#Pagina_Principal_Header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+#Pagina_Principal_Header ul li {
+    margin-left: 15px;
+}
+
+.header-group-left, .header-group-right {
+    display: flex;
+    align-items: center;
+}
+
+
+#profile-container {
+    display: none;
+}
