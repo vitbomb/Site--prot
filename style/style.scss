@@ -22,31 +22,6 @@ $font-stack: 'Inter', sans-serif;
     }
 }
 
-#Pagina_Principal_Header {
-    border-bottom: white 2px solid;
-    background-color: black;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    width: 99vw;
-    height: 17vh;
-
-    li {
-        margin: 8px;
-        margin-right: 4vw;
-
-        a:hover {
-            color: rgb(77, 77, 190);
-        }
-
-        a {
-            font-size: 2vh;
-            color: white;
-            font-family: Cormorand, Garamond, sans-serif;
-        }
-    }
-
-}
 
 #Market {
     margin-left: 5vw;
@@ -57,24 +32,13 @@ $font-stack: 'Inter', sans-serif;
     margin-right: 3vw;
 }
 
-#imglogo {
-    width: 8vw;
-    border-radius: 3vh;
-    margin-right: 32vw;
-}
-
-#imgperfil {
-    border-radius: 20vh;
-    height: 12vh;
-    border: white, 2px, solid;
-}
 
 #Home {
     border-top: white 2px solid;
     height: 82.5vh;
     width: 99vw;
     display: flex;
-    background-image: url(/images/wave.png);
+    background-image: url(/images/imgfundo3.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -112,7 +76,7 @@ $font-stack: 'Inter', sans-serif;
 .pessoas {
     display: flex;
     flex-direction: column;
-    background-image: url(/images/wave.png);
+    background-image: url(/images/imgfundo3.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
@@ -132,7 +96,7 @@ $font-stack: 'Inter', sans-serif;
     margin-top: 3vw;
 
     img {
-        width: 45vw;
+        width: 21vw;
         border-radius: 1.1vw;
         margin-left: 12vh;
     }
@@ -165,7 +129,7 @@ $font-stack: 'Inter', sans-serif;
     margin-top: 3vw;
 
     img {
-        width: 45vw;
+        width: 21vw;
         border-radius: 1.1vw;
         margin-left: 11vh;
     }
@@ -198,7 +162,7 @@ $font-stack: 'Inter', sans-serif;
     margin-top: 3vw;
 
     img {
-        width: 45vw;
+        width: 21vw;
         border-radius: 1.1vw;
         margin-left: 12vh;
     }
@@ -223,7 +187,7 @@ $font-stack: 'Inter', sans-serif;
 
 .form-container {
     border-top: white 2px solid;
-    background-image: url(/images/wave.png);
+    background-image: url(/images/imgfundo3.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 83vh;
@@ -275,7 +239,7 @@ $font-stack: 'Inter', sans-serif;
 .faq {
     border-top: white 2px solid;
     padding: 4vh 6vw;
-    background-image: url(/images/wave.png);
+    background-image: url(/images/imgfundo3.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 73vh;
@@ -375,7 +339,7 @@ body {
     font-family: $font-stack;
     margin: 0;
     padding: 0;
-    background-image: url(/images/wave.png);
+    background-image: url(/images/imgfundo3.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -583,66 +547,11 @@ body {
     margin-right: 10vw;
     border: white 2px solid;
 }
-
-/* =================================== */
-/*           ESTILOS DO HEADER         */
-/* =================================== */
-
-#Pagina_Principal_Header {
-  // 1. Layout principal do Header (SEU CÓDIGO ORIGINAL)
-  border-bottom: white 2px solid;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  width: 95vw;
-  height: 17vh;
-  padding: 0 20px; // Adicionar um padding é bom para espaçamento
-
-  // Estilos gerais para links dentro do header
-  li {
-    list-style-type: none;
-    margin: 8px;
-
-    a {
-      text-decoration: none;
-      font-size: 2.6vh;
-      color: white;
-      font-family: 'Cormorant Garamond', sans-serif; // Corrigido para corresponder à importação
-      transition: color 0.3s;
-
-      &:hover {
-        color: rgb(77, 77, 190);
-      }
-    }
-  }
-
-  // Grupos de alinhamento
-  .header-group-left,
-  .header-group-center,
-  .header-group-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  // Específico para o grupo central (navegação)
-  .header-group-center ul {
-    display: flex;
-    margin-left: 25vw;
-  }
-}
-
-// Estilos para as imagens no header
 #imgmenu {
   width: 3vw;
-  margin-right: 2vw; // Ajuste o espaçamento conforme necessário
+  margin-right: 2vw;
   cursor: pointer;
 }
-
-#imglogo {
-  width: 8vw;
-  border-radius: 3vh;
-}
-
 #imgperfil {
   border-radius: 50%;
   height: 10vh;
@@ -650,60 +559,94 @@ body {
   border: 2px solid white;
   cursor: pointer;
 }
+#Pagina_Principal_Header {
+  background-color: black;
+  border-bottom: white 2px solid;
+  height: 17vh;
+  width: 100%;
+  padding: 0 2vw;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.header-group-left,
+.header-group-center,
+.header-group-right {
+  display: flex;
+  align-items: center;
+}
+.header-group-center {
+  margin-left: auto;
+}
+#Pagina_Principal_Header ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#Pagina_Principal_Header li {
+  margin: 0 15px; 
+}
 
-
-/* =================================== */
-/*   LÓGICA CORRIGIDA PARA O SUBMENU   */
-/* =================================== */
-
+#Pagina_Principal_Header a {
+  text-decoration: none;
+  font-size: 2.2vh;
+  color: white;
+  font-family: 'Cormorant Garamond', sans-serif;
+  transition: color 0.3s;
+  &:hover {
+    color: rgb(121, 121, 235);
+  }
+}
+#imgmenu {
+  width: 3vw;
+  max-width: 40px;
+  margin-right: 2vw;
+  cursor: pointer;
+}
+#imglogo {
+  width: 12vw;
+  max-width: 120px;
+  border-radius: 15px;
+}
 .perfil-container {
-  position: relative; // Contexto para o submenu absoluto
-
   .perfil-principal {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    .perfil { // Este é o <li> que será o gatilho do hover
-      position: relative;
-
-      // 1. Esconda o submenu por padrão
+    .perfil {
+      position: relative; 
+      #imgperfil {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid white;
+        cursor: pointer;
+        display: block;
+      }
       .submenu {
-        display: none;
+        display: none !important; 
         position: absolute;
         top: 100%;
         right: 0;
+        z-index: 1000;
         margin-top: 10px;
         background-color: #000;
         border: 1px solid #333;
         border-radius: 5px;
         min-width: 200px;
-        z-index: 1000;
         padding: 5px 0;
-        list-style: none; // Garantir que não tenha bullets
-        
-        // Estilos para os links dentro do submenu
         li a {
           display: block;
           padding: 10px 15px;
-          white-space: nowrap; // Impede que o texto quebre
-          
-          &:hover {
-            background-color: rgb(77, 77, 190);
-            color: white; // Garante que a cor não mude para algo indesejado
-          }
+          white-space: nowrap;
         }
       }
-
-      // 2. A MÁGICA: Mostra o submenu ao passar o mouse sobre o .perfil
       &:hover > .submenu {
-        display: block;
+        display: block !important;
       }
     }
   }
 }
-
-// Regra final para o JavaScript controlar a visibilidade do ícone de perfil
 #profile-container {
   display: none;
 }

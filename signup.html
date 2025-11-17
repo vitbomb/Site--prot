@@ -9,74 +9,91 @@
 </head>
 
 <body>
-    <!-- ESTE É O HTML COMPLETO QUE DEVE ESTAR EM TODAS AS PÁGINAS -->
-<header id="Pagina_Principal_Header">
-    <!-- ... (grupo da esquerda e centro) ... -->
-    <div class="header-group-left">
-        <img id="imgmenu" src="/images/menu.png" alt="imgmenu">
-        <a href="index.html"><img id="imglogo" src="/images/image.png" alt="logotipo do site"></a>
-    </div>
-    <nav class="header-group-center">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="somos.html">Sobre Nós</a></li>
-            <li><a href="help.html">Help?</a></li>
-        </ul>
-    </nav>
-
-    <div class="header-group-right">
-        <!-- Links que SÓ APARECEM se o usuário NÃO estiver logado -->
-        <ul class="auth-links" id="auth-links">
-            <li id="signup-link"><a href="signup.html">Sign Up</a></li>
-            <li id="signin-link"><a href="signin.html">Sign In</a></li>
-        </ul>
-        
-        <!-- Container que SÓ APARECE se o usuário ESTIVER logado -->
-        <div class="perfil-container" id="profile-container">
-            <ul class="perfil-principal">
-                <li class="perfil">
-                    <a href="#"><img id="imgperfil" src="/images/perfil.jpeg" alt="Imagem de perfil"></a>
-                    <ul class="submenu">
-                        <li><a id="view-profile-link" href="#">Acessar Perfil</a></li>
-                        <li><a id="edit-profile-link" href="#">Editar perfil</a></li>
-                        <li><a href="#">Configurações</a></li>
-                        <li><a id="logout-link" href="#">Sair (Logout)</a></li> 
-                    </ul>
-                </li>
-            </ul>
+    <header id="Pagina_Principal_Header">
+        <div class="header-group-left">
+            <img id="imgmenu" src="/images/menu.png" alt="imgmenu">
+            <a href="index.html"><img id="imglogo" src="/images/image.png" alt="logotipo do site"></a>
         </div>
-    </div>
-</header>
+        <nav class="header-group-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="somos.html">Sobre Nós</a></li>
+                <li><a href="help.html">Help?</a></li>
+            </ul>
+        </nav>
 
+        <div class="header-group-right">
+            <ul class="auth-links" id="auth-links">
+                <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+                <li id="signin-link"><a href="signin.html">Sign In</a></li>
+            </ul>
+            <div class="perfil-container" id="profile-container">
+                <ul class="perfil-principal">
+                    <li class="perfil">
+                        <a href="#"><img id="imgperfil" src="/images/perfil.jpeg" alt="Imagem de perfil"></a>
+                        <ul class="submenu">
+                            <li><a id="view-profile-link" href="#">Acessar Perfil</a></li>
+                            <li><a id="edit-profile-link" href="#">Editar perfil</a></li>
+                            <li><a href="#">Configurações</a></li>
+                            <li><a id="logout-link" href="#">Sair (Logout)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
     <section class="form-container">
         <h2>Crie sua conta</h2>
-        <form class="form" id="signupForm">
-            <input type="text" placeholder="Nome completo" id="name" required />
-            <input type="email" placeholder="Email" id="email" required />
-            <input type="password" placeholder="Senha" id="password" required />
-            <input type="password" placeholder="Confirmar senha" />
-            <p><a href="signin.html">Já possuo cadastro.</a></p>
-            <button type="submit">Cadastrar</button>
-        </form>
+<form class="form" id="signupForm">
+    <h2>Crie sua conta</h2>
+    <input type="text" placeholder="Nome completo" id="name" required />
+    <input type="email" placeholder="Email" id="email" required />
+    <input type="password" placeholder="Senha" id="password" required />
+    <div id="password-requirements" style="color: #ccc; font-size: 1.8vh; margin-top: -10px; margin-bottom: 10px; text-align: left; width: 100%;"></div>
+    <input type="password" placeholder="Confirmar senha" id="confirmPassword" required />
+
+    <p><a href="signin.html">Já possuo cadastro.</a></p>
+    <button type="submit">Cadastrar</button>
+</form>
     </section>
     <footer class="foothome">
 
     </footer>
 <script>
     const signupForm = document.getElementById('signupForm');
-
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const requirementsDiv = document.getElementById('password-requirements');
+    const emailInput = document.getElementById('email');
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\.\$@!%*?&])[A-Za-z\d\.\$@!%*?&]{8,}$/;
+    passwordInput.addEventListener('input', () => {
+        if (passwordRegex.test(passwordInput.value)) {
+            requirementsDiv.textContent = '✓ Senha forte!';
+            requirementsDiv.style.color = 'lightgreen';
+        } else {
+            requirementsDiv.textContent = 'Mínimo 8 caracteres, com maiúscula, minúscula, número e símbolo (ex: .).';
+            requirementsDiv.style.color = '#ff8a80';
+        }
+    });
     signupForm.addEventListener('submit', async (event) => {
         event.preventDefault();
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+        if (!passwordRegex.test(password)) {
+            alert('Por favor, crie uma senha que atenda aos requisitos de segurança.');
+            return; 
+        }
 
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+        if (password !== confirmPassword) {
+            alert('As senhas não coincidem.');
+            return;
+        }
 
         try {
             const response = await fetch('http://localhost:3000/api/register', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
             });
 
@@ -84,7 +101,8 @@
 
             if (response.ok) {
                 alert(data.message);
-                window.location.href = 'signin.html';
+                sessionStorage.setItem('verificationUserId', data.userId);
+                window.location.href = 'verify.html';
             } else {
                 alert('Erro: ' + data.message);
             }
@@ -96,4 +114,5 @@
 </script>
     <script src="js/header.js"></script>
 </body>
+
 </html>

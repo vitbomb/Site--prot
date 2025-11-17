@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Verificar Email - Skill Market</title>
+</head>
+
+<body>
+    <section class="form-container">
+        <h2>Verifique seu Email</h2>
+        <p style="color:white; text-align: center; margin-bottom: 20px;">
+            Enviamos um código de 6 dígitos para o seu email. Por favor, insira-o abaixo.
+        </p>
+        <form class="form" id="verifyForm">
+            <input type="text" placeholder="Código de 6 dígitos" id="verificationCode" required maxlength="6" />
+            <button type="submit">Verificar e Entrar</button>
+        </form>
+    </section>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const verifyForm = document.getElementById('verifyForm');
+        const userId = sessionStorage.getItem('verificationUserId');
+
+        if (!userId) {
+            alert('Ocorreu um erro. Por favor, tente se registrar novamente.');
+            window.location.href = 'signup.html';
+            return;
+        }
+
+        verifyForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const code = document.getElementById('verificationCode').value;
+
+            try {
+                const numericUserId = parseInt(userId, 10);
+
+                const response = await fetch('http://localhost:3000/api/verify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId: numericUserId, code: code })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    return alert('Erro: ' + data.message);
+                }
+                alert(data.message);
+                
+                sessionStorage.removeItem('verificationUserId');
+                localStorage.setItem('authToken', data.token);
+                localStorage.setItem('userId', data.userId);
+                localStorage.removeItem('profileImageUrl'); 
+                window.location.href = 'criarperfil.html';
+
+            } catch (error) {
+                alert('Houve um erro de comunicação com o servidor.');
+                console.error(error);
+            }
+        });
+    });
+</script>
+    <script src="js/header.js"></script>
+</body>
+
+</html>
