@@ -205,8 +205,6 @@ $font-stack: 'Inter', sans-serif;
 }
 
 .text2 {
-
-
     font-family: Orbitron, sans-serif;
 
     p {
@@ -221,7 +219,6 @@ $font-stack: 'Inter', sans-serif;
         font-size: 3vw;
         color: white;
     }
-
 }
 
 .form-container {
@@ -306,7 +303,6 @@ $font-stack: 'Inter', sans-serif;
         }
     }
 }
-
 
 .perfil-content {
     background-image: url(/images/wave.png);
@@ -440,11 +436,13 @@ body {
         color: white;
         margin-left: 3vw;
         margin-right: 3vw;
-        p{
+
+        p {
             margin-top: 1vw;
             margin-left: 1vw;
         }
-        h3{
+
+        h3 {
             margin-top: 1vw;
         }
     }
@@ -453,14 +451,17 @@ body {
         color: white;
         margin-left: 3vw;
         margin-right: 3vw;
-         ul{
+
+        ul {
             margin-top: 1vw;
             margin-left: 1vw;
-            li{
+
+            li {
                 margin-left: 1vw;
             }
         }
-        h3{
+
+        h3 {
             margin-top: 1vw;
         }
     }
@@ -471,7 +472,8 @@ body {
         margin-left: 3vw;
         margin-right: 3vw;
         flex-direction: column;
-        h3{
+
+        h3 {
             margin-top: 1vw;
         }
 
@@ -486,204 +488,222 @@ body {
             }
         }
     }
-    .contato{
-         
+
+    .contato {
         margin-left: 3vw;
         margin-right: 3vw;
         display: flex;
         flex-direction: column;
         color: white;
-        div{
+
+        div {
             color: white;
-        display: flex;
-        flex-direction: row;
-          img{
-            height: 3vw;
-            width: 3vw;
+            display: flex;
+            flex-direction: row;
+
+            img {
+                height: 3vw;
+                width: 3vw;
+            }
+
+            p {
+                margin: 1vw;
+            }
+
+            a {
+                margin: 1vw;
+            }
         }
-        p{
-            margin: 1vw;
-        }
-        a{
-            margin: 1vw;
-        }
-        }
-      
+
     }
 }
-
 
 .formulario-perfil {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  margin: 4vw;
-  font-family: 'Inter', sans-serif;
- .page1{
-      background-color: rgb(0, 0, 0);
-    height: 75vw;
-    margin-left: 10vw;
-    margin-top: 5vh;
-    margin-right: 10vw;
-    border: white 2px solid;
- }
-  h2 {
-    margin-bottom: 2vw;
-    font-size: 2.5vw;
     color: white;
-  }
+    display: flex;
+    flex-direction: column;
+    margin: 4vw;
+    font-family: 'Inter', sans-serif;
 
-  label {
-    margin-top: 1.5vw;
-    margin-bottom: 0.5vw;
-    font-weight: 600;
-  }
-
-  input, textarea {
-    padding: 1vw;
-    border: none;
-    border-radius: 0.5vw;
-    background-color: #222;
-    color: white;
-    font-size: 1vw;
-    width: 50%;
-    resize: vertical;
-  }
-
-  button {
-    margin-top: 3vw;
-    width: 30%;
-    padding: 1vw;
-    background-color: #4444aa;
-    color: white;
-    border: none;
-    border-radius: 1vw;
-    font-size: 1.2vw;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #6666cc;
+    .page1 {
+        background-color: rgb(0, 0, 0);
+        height: 75vw;
+        margin-left: 10vw;
+        margin-top: 5vh;
+        margin-right: 10vw;
+        border: white 2px solid;
     }
-  }
+
+    h2 {
+        margin-bottom: 2vw;
+        font-size: 2.5vw;
+        color: white;
+    }
+
+    label {
+        margin-top: 1.5vw;
+        margin-bottom: 0.5vw;
+        font-weight: 600;
+    }
+
+    input,
+    textarea {
+        padding: 1vw;
+        border: none;
+        border-radius: 0.5vw;
+        background-color: #222;
+        color: white;
+        font-size: 1vw;
+        width: 50%;
+        resize: vertical;
+    }
+
+    button {
+        margin-top: 3vw;
+        width: 30%;
+        padding: 1vw;
+        background-color: #4444aa;
+        color: white;
+        border: none;
+        border-radius: 1vw;
+        font-size: 1.2vw;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #6666cc;
+        }
+    }
 }
-.page2{
-      background-color: rgb(0, 0, 0);
+
+.page2 {
+    background-color: rgb(0, 0, 0);
     height: 95vw;
     margin-left: 10vw;
     margin-top: 5vh;
     margin-right: 10vw;
     border: white 2px solid;
 }
+
+/* =================================== */
+/*           ESTILOS DO HEADER         */
+/* =================================== */
+
+#Pagina_Principal_Header {
+  // 1. Layout principal do Header (SEU CÓDIGO ORIGINAL)
+  border-bottom: white 2px solid;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  width: 95vw;
+  height: 17vh;
+  padding: 0 20px; // Adicionar um padding é bom para espaçamento
+
+  // Estilos gerais para links dentro do header
+  li {
+    list-style-type: none;
+    margin: 8px;
+
+    a {
+      text-decoration: none;
+      font-size: 2.6vh;
+      color: white;
+      font-family: 'Cormorant Garamond', sans-serif; // Corrigido para corresponder à importação
+      transition: color 0.3s;
+
+      &:hover {
+        color: rgb(77, 77, 190);
+      }
+    }
+  }
+
+  // Grupos de alinhamento
+  .header-group-left,
+  .header-group-center,
+  .header-group-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  // Específico para o grupo central (navegação)
+  .header-group-center ul {
+    display: flex;
+    margin-left: 25vw;
+  }
+}
+
+// Estilos para as imagens no header
+#imgmenu {
+  width: 3vw;
+  margin-right: 2vw; // Ajuste o espaçamento conforme necessário
+  cursor: pointer;
+}
+
+#imglogo {
+  width: 8vw;
+  border-radius: 3vh;
+}
+
+#imgperfil {
+  border-radius: 50%;
+  height: 10vh;
+  max-height: 60px;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+
+/* =================================== */
+/*   LÓGICA CORRIGIDA PARA O SUBMENU   */
+/* =================================== */
+
 .perfil-container {
-  position: relative;
+  position: relative; // Contexto para o submenu absoluto
 
   .perfil-principal {
-    list-style: none;
     margin: 0;
     padding: 0;
-  }
+    list-style: none;
 
-  .submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 8px;
-    background-color: #000;
-    border-radius: 5px;
-    min-width: 200px;
-    z-index: 2000;
-    padding: 5px 0;
+    .perfil { // Este é o <li> que será o gatilho do hover
+      position: relative;
 
-    a {
-      display: block;
-      padding: 10px 15px;
-      color: white;
-      text-decoration: none;
-      white-space: nowrap;
+      // 1. Esconda o submenu por padrão
+      .submenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 10px;
+        background-color: #000;
+        border: 1px solid #333;
+        border-radius: 5px;
+        min-width: 200px;
+        z-index: 1000;
+        padding: 5px 0;
+        list-style: none; // Garantir que não tenha bullets
+        
+        // Estilos para os links dentro do submenu
+        li a {
+          display: block;
+          padding: 10px 15px;
+          white-space: nowrap; // Impede que o texto quebre
+          
+          &:hover {
+            background-color: rgb(77, 77, 190);
+            color: white; // Garante que a cor não mude para algo indesejado
+          }
+        }
+      }
 
-      &:hover {
-        background: rgb(76, 0, 128);
+      // 2. A MÁGICA: Mostra o submenu ao passar o mouse sobre o .perfil
+      &:hover > .submenu {
+        display: block;
       }
     }
   }
-
-  .perfil-container {
-  position: relative; // Essencial para o posicionamento do submenu
-
-  .submenu {
-    display: none !important; 
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 8px;
-    background-color: #000;
-    border-radius: 5px;
-    min-width: 200px;
-    z-index: 2000;
-    padding: 5px 0;
-    border: 1px solid #333;
-
-    a {
-      display: block;
-      padding: 10px 15px;
-      white-space: nowrap;
-
-      &:hover {
-        background: rgb(76, 0, 128);
-      }
-    }
-  }
-
-  // A MÁGICA ACONTECE AQUI:
-  // Quando o mouse passar por CIMA de qualquer coisa dentro de .perfil-container...
-  &:hover {
-    // ...o .submenu que for filho direto dele ficará visível.
-    > .submenu, .perfil > .submenu, .perfil-principal > .perfil > .submenu {
-      display: block;
-    }
-  }
 }
 
-// Para garantir que a imagem de perfil e os links sejam visíveis
-#imgperfil {
-    border-radius: 50%;
-    height: 10vh; // Ajuste conforme necessário
-    max-height: 60px;
-    border: 2px solid white;
-}
-
-.perfil-principal {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-}
-#Pagina_Principal_Header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-#Pagina_Principal_Header ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-#Pagina_Principal_Header ul li {
-    margin-left: 15px;
-}
-
-.header-group-left, .header-group-right {
-    display: flex;
-    align-items: center;
-}
-
-
+// Regra final para o JavaScript controlar a visibilidade do ícone de perfil
 #profile-container {
-    display: none;
+  display: none;
 }

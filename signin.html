@@ -7,35 +7,44 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <header id="Pagina_Principal_Header">
+<!-- ESTE É O HTML COMPLETO QUE DEVE ESTAR EM TODAS AS PÁGINAS -->
+<header id="Pagina_Principal_Header">
+    <!-- ... (grupo da esquerda e centro) ... -->
     <div class="header-group-left">
         <img id="imgmenu" src="/images/menu.png" alt="imgmenu">
         <a href="index.html"><img id="imglogo" src="/images/image.png" alt="logotipo do site"></a>
     </div>
-    
+    <nav class="header-group-center">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="somos.html">Sobre Nós</a></li>
+            <li><a href="help.html">Help?</a></li>
+        </ul>
+    </nav>
+
     <div class="header-group-right">
-         <li><a href="index.html">Home</a></li>
-        <li><a href="somos.html">Sobre Nós</a></li>
-        <li><a href="help.html">Help?</a></li>
-        <ul class="auth-links">
+        <!-- Links que SÓ APARECEM se o usuário NÃO estiver logado -->
+        <ul class="auth-links" id="auth-links">
             <li id="signup-link"><a href="signup.html">Sign Up</a></li>
             <li id="signin-link"><a href="signin.html">Sign In</a></li>
         </ul>
-        <div class="perfil-container" id="profile-container" style="display: none;">
-            <li class="perfil">
-                <a href="#">
-                    <img id="imgperfil" src="/images/perfil.jpeg" alt="Imagem de perfil">
-                </a>
-                <ul class="submenu">
-                    <li><a id="view-profile-link" href="#">Acessar Perfil</a></li>
-                    <li><a id="edit-profile-link" href="#">Editar perfil</a></li>
-                    <li><a href="#">Configurações</a></li>
-                    <li><a id="logout-link" href="#">Sair (Logout)</a></li> 
-                </ul>
-            </li>
+        
+        <!-- Container que SÓ APARECE se o usuário ESTIVER logado -->
+        <div class="perfil-container" id="profile-container">
+            <ul class="perfil-principal">
+                <li class="perfil">
+                    <a href="#"><img id="imgperfil" src="/images/perfil.jpeg" alt="Imagem de perfil"></a>
+                    <ul class="submenu">
+                        <li><a id="view-profile-link" href="#">Acessar Perfil</a></li>
+                        <li><a id="edit-profile-link" href="#">Editar perfil</a></li>
+                        <li><a href="#">Configurações</a></li>
+                        <li><a id="logout-link" href="#">Sair (Logout)</a></li> 
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-  </header>
+</header>
   <section class="form-container">
     <h2>Entrar na sua conta</h2>
     
