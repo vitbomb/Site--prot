@@ -395,6 +395,8 @@ body {
   width: 3vw;
 }
 .page .contato div p {
+  display: flex;
+  align-items: center;
   margin: 1vw;
 }
 .page .contato div a {

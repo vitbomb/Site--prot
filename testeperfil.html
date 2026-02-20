@@ -140,7 +140,7 @@
                 contatoDiv.innerHTML += `<p><img src="images/logogmail.png" alt="Email"> <a href="mailto:${perfil.contact_email}">${perfil.contact_email}</a></p>`;
             }
             if (perfil.phone) {
-                contatoDiv.innerHTML += `<p><img src="images/wpp.png" alt="WhatsApp"> <a href="https://wa.me/${perfil.phone.replace(/\D/g,'')}" target="_blank">${perfil.phone}</a></p>`;
+                contatoDiv.innerHTML += `<p><img src="images/whats.png" alt="WhatsApp"> <a href="https://wa.me/${perfil.phone.replace(/\D/g,'')}" target="_blank">${perfil.phone}</a></p>`;
             }
             if (perfil.instagram_url) {
                 const username = perfil.instagram_url.split('/').filter(Boolean).pop();
