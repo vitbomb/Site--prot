@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultados da Busca | Skill Market</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header id="Pagina_Principal_Header">
+        <!-- O cabeçalho aqui será exatamente o mesmo que você atualizou nos outros arquivos HTML -->
+        <div class="header-group-left">
+            <img id="imgmenu" src="/images/menu.png" alt="imgmenu">
+            <a href="index.html"><img id="imglogo" src="/images/image.png" alt="logotipo do site"></a>
+        </div>
+        <div class="header-group-center">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="somos.html">Sobre Nós</a></li>
+                    <li><a href="help.html">Help?</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar-container">
+                <input type="text" id="search-input" placeholder="Buscar profissionais..." aria-label="Buscar profissionais">
+                <button id="search-button">Buscar</button>
+            </div>
+        </div>
+        <div class="header-group-right">
+            <ul class="auth-links" id="auth-links">
+                <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+                <li id="signin-link"><a href="signin.html">Sign In</a></li>
+            </ul>
+            <div class="perfil-container" id="profile-container">
+                <ul class="perfil-principal">
+                    <li class="perfil">
+                        <a href="#"><img id="imgperfil" src="/images/perfil.jpeg" alt="Imagem de perfil"></a>
+                        <ul class="submenu">
+                            <li><a id="view-profile-link" href="#">Acessar Perfil</a></li>
+                            <li><a id="edit-profile-link" href="#">Editar perfil</a></li>
+                            <li><a href="#">Configurações</a></li>
+                            <li><a id="logout-link" href="#">Sair (Logout)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="search-results-section">
+        <h2 id="results-title">Resultados da Busca por "..."</h2>
+        <div id="results-list" class="professional-cards-container">
+            <!-- Os cartões dos profissionais serão injetados aqui pelo JavaScript -->
+            <p id="no-results-message" style="display: none; color: white; text-align: center;">Nenhum profissional encontrado para sua busca.</p>
+        </div>
+    </section>
+
+    <footer class="foothome">
+        <p>&copy; 2025 Skill Market. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/header.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('query'); // Pega o termo de busca da URL
+            const resultsTitle = document.getElementById('results-title');
+            const resultsList = document.getElementById('results-list');
+            const noResultsMessage = document.getElementById('no-results-message');
+
+            if (query) {
+                resultsTitle.textContent = `Resultados da Busca por "${query}"`;
+                try {
+                    // Faz a chamada à API do backend
+                    const response = await fetch(`http://localhost:3000/api/search?query=${encodeURIComponent(query)}`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const professionals = await response.json(); // Pega os dados dos profissionais
+
+                    if (professionals.length > 0) {
+                        resultsList.innerHTML = ''; // Limpa o conteúdo existente
+                        professionals.forEach(p => {
+                            // Cria um cartão para cada profissional encontrado
+                            const card = document.createElement('div');
+                            card.className = 'professional-card';
+                            card.innerHTML = `
+                                <img src="${p.profile_image_url ? `http://localhost:3000${p.profile_image_url}` : '/images/perfil.jpeg'}" alt="Foto de Perfil">
+                                <h3><a href="testeperfil.html?id=${p.user_id}">${p.full_name}</a></h3>
+                                <p>${p.title}</p>
+                                <p>📍 ${p.location}</p>
+                                <p>Habilidades: ${p.skills || 'N/A'}</p>
+                                <a href="testeperfil.html?id=${p.user_id}" class="view-profile-btn">Ver Perfil</a>
+                            `;
+                            resultsList.appendChild(card); // Adiciona o cartão à lista de resultados
+                        });
+                    } else {
+                        noResultsMessage.style.display = 'block'; // Mostra mensagem de "nenhum resultado"
+                    }
+
+                } catch (error) {
+                    console.error("Erro ao buscar resultados da busca:", error);
+                    resultsList.innerHTML = `<p style="color: red; text-align: center;">Houve um erro ao carregar os resultados da busca.</p>`;
+                }
+            } else {
+                resultsTitle.textContent = 'Por favor, digite um termo de busca.';
+                noResultsMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

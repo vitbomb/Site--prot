@@ -10,38 +10,45 @@
 
 <body>
     <header id="Pagina_Principal_Header">
-
-        <div class="header-group-left">
-            <img id="imgmenu" src="/images/menu.png" alt="imgmenu">
-            <a href="index.html"><img id="imglogo" src="/images/image.png" alt="logotipo do site"></a>
+    <div class="header-group-left">
+        <img id="imgmenu" src="/images/menu.png" alt="imgmenu">
+        <div class="search-bar-container">
+            <input type="text" id="search-input" placeholder="Buscar profissionais..." aria-label="Buscar profissionais">
+            <button id="search-button">Buscar</button>
         </div>
-        <nav class="header-group-center">
+    </div>
+   <div class="header-group-center">
+       
+    <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="somos.html">Sobre Nós</a></li>
                 <li><a href="help.html">Help?</a></li>
             </ul>
         </nav>
-        <div class="header-group-right">
-            <ul class="auth-links" id="auth-links">
-                <li id="signup-link"><a href="signup.html">Sign Up</a></li>
-                <li id="signin-link"><a href="signin.html">Sign In</a></li>
+        
+   
+</div>
+    <div class="header-group-right">
+        <ul class="auth-links" id="auth-links">
+            <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+            <li id="signin-link"><a href="signin.html">Sign In</a></li>
+        </ul>
+        <div class="perfil-container" id="profile-container">
+            <ul class="perfil-principal">
+                <li class="perfil">
+                    <a href="#"><img id="imgperfil" src="/images/perfil.jpeg" alt="Imagem de perfil"></a>
+                    <ul class="submenu">
+                        <li><a id="view-profile-link" href="#">Acessar Perfil</a></li>
+                        <li><a id="edit-profile-link" href="#">Editar perfil</a></li>
+                        <li><a href="#">Configurações</a></li>
+                        <li><a id="logout-link" href="#">Sair (Logout)</a></li> 
+                    </ul>
+                </li>
             </ul>
-            <div class="perfil-container" id="profile-container">
-                <ul class="perfil-principal">
-                    <li class="perfil">
-                        <a href="#"><img id="imgperfil" src="/images/perfil.jpeg" alt="Imagem de perfil"></a>
-                        <ul class="submenu">
-                            <li><a id="view-profile-link" href="#">Acessar Perfil</a></li>
-                            <li><a id="edit-profile-link" href="#">Editar perfil</a></li>
-                            <li><a href="#">Configurações</a></li>
-                            <li><a id="logout-link" href="#">Sair (Logout)</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
         </div>
-    </header>
+    </div>
+</header>
     <section class="page2">
         <form id="formPerfil" class="formulario-perfil">
             <h2>Criação de Perfil</h2>

@@ -29,14 +29,27 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 const cpUpload = upload.fields([{ name: 'profileImage', maxCount: 1 }, { name: 'portfolioImages', maxCount: 8 }]);
+console.log("Tentando conectar com a URL:", process.env.DATABASE_URL);
 const db = new Pool({
     connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false // Volte para esta opção
+    }
 });
-db.connect((err) => {
-    if (err) {
-        console.error('Erro ao conectar ao banco de dados PostgreSQL:', err.stack);
-    } else {
-        console.log('Conectado ao banco de dados PostgreSQL (Neon) com sucesso!');
+// Adicione esta rota logo após a inicialização do 'app'
+app.get('/api/healthcheck', async (req, res) => {
+    try {
+        const result = await db.query('SELECT NOW()');
+        res.status(200).json({ 
+            status: 'ok', 
+            databaseTime: result.rows[0].now 
+        });
+    } catch (err) {
+        console.error('Healthcheck falhou:', err);
+        res.status(500).json({ 
+            status: 'error', 
+            message: 'Não foi possível conectar ao banco de dados.' 
+        });
     }
 });
 app.post('/api/register', async (req, res) => {
@@ -308,6 +321,48 @@ app.get('/api/profile/:userId', async (req, res) => {
     } catch (error) {
         console.error(`Erro CRÍTICO ao buscar perfil para userId ${req.params.userId}:`, error);
         res.status(500).json({ message: "Erro no servidor ao buscar perfil." });
+    }
+});
+// Rota para buscar profissionais
+app.get('/api/search', async (req, res) => {
+    try {
+        const { query } = req.query; // Pega o termo de busca dos parâmetros da URL (ex: ?query=designer)
+        if (!query) {
+            return res.status(400).json({ message: "Termo de busca é obrigatório." });
+        }
+
+        // Prepara o termo de busca para ser case-insensitive e para encontrar partes da palavra
+        const searchTerm = `%${query}%`;
+
+        // Query SQL para buscar profissionais por nome completo, área de atuação ou habilidades
+        const searchProfileQuery = `
+            SELECT
+                p.user_id,
+                p.full_name,
+                p.title,
+                p.location,
+                p.profile_image_url,
+                STRING_AGG(DISTINCT s.skill_name, ', ') AS skills -- Agrega habilidades, garantindo que não há duplicatas
+            FROM
+                profiles p
+            LEFT JOIN
+                skills s ON p.id = s.profile_id
+            WHERE
+                p.full_name ILIKE $1 OR   -- Busca por nome completo (case-insensitive)
+                p.title ILIKE $1 OR       -- Busca por área de atuação/cargo (case-insensitive)
+                EXISTS (SELECT 1 FROM skills WHERE profile_id = p.id AND skill_name ILIKE $1) -- Busca por habilidades
+            GROUP BY
+                p.user_id, p.full_name, p.title, p.location, p.profile_image_url
+            ORDER BY
+                p.full_name;
+        `;
+
+        const { rows } = await db.query(searchProfileQuery, [searchTerm]);
+
+        res.json(rows); // Retorna a lista de profissionais encontrados
+    } catch (error) {
+        console.error("Erro ao buscar profissionais:", error);
+        res.status(500).json({ message: "Erro no servidor ao realizar a busca." });
     }
 });
 const PORT = process.env.PORT || 3000;

@@ -38,9 +38,15 @@ $font-stack: 'Inter', sans-serif;
     height: 82.5vh;
     width: 99vw;
     display: flex;
-    background-image: url(/images/imgfundo3.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #234ED0;
+     margin: 0;
+  
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+    
 
     p {
         text-align: justify;
@@ -549,22 +555,11 @@ body {
     margin-right: 10vw;
     border: white 2px solid;
 }
-#imgmenu {
-  width: 3vw;
-  margin-right: 2vw;
-  cursor: pointer;
-}
-#imgperfil {
-  border-radius: 50%;
-  height: 10vh;
-  max-height: 60px;
-  border: 2px solid white;
-  cursor: pointer;
-}
+
 #Pagina_Principal_Header {
-  background-color: black;
+  background-color: #1f202e;
   border-bottom: white 2px solid;
-  height: 17vh;
+  height: 14vh;
   width: 100%;
   padding: 0 2vw;
   box-sizing: border-box;
@@ -576,34 +571,58 @@ body {
 .header-group-right {
   display: flex;
   align-items: center;
+  .auth-links{
+     background-color: #e8eac7;
+  width: 200px;
+  height: 32px;
+  border-radius: 10px;
+    a{
+        color: #1f202e !important;
+    }
+  }
 }
 .header-group-center {
   margin-left: auto;
+  a{
+    color: #1f202e !important;
+  }
+  ul{
+     background-color: #e8eac7;
+  width: 300px;
+  height: 32px;
+  border-radius: 10px;
+ }
 }
 #Pagina_Principal_Header ul {
   display: flex;
   align-items: center;
   list-style-type: none;
+  
+  justify-content: space-around;
   margin: 0;
   padding: 0;
+ 
 }
 #Pagina_Principal_Header li {
   margin: 0 15px; 
+  
 }
 
 #Pagina_Principal_Header a {
   text-decoration: none;
-  font-size: 2.2vh;
-  color: white;
+  
+  font-size: 2.6vh;
+  color: rgb(255, 255, 255);
   font-family: 'Cormorant Garamond', sans-serif;
+  font-weight: 900;
   transition: color 0.3s;
   &:hover {
     color: rgb(121, 121, 235);
   }
 }
 #imgmenu {
-  width: 3vw;
-  max-width: 40px;
+  width: 5vw;
+  
   margin-right: 2vw;
   cursor: pointer;
 }
@@ -617,8 +636,8 @@ body {
     .perfil {
       position: relative; 
       #imgperfil {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         object-fit: cover;
         border: 2px solid white;
@@ -651,4 +670,150 @@ body {
 }
 #profile-container {
   display: none;
+}
+// Ajuste o cabeçalho principal para usar space-between para distribuir os grupos
+#Pagina_Principal_Header {
+  justify-content: space-between;
+}
+
+// Estilos para o grupo central (onde ficarão a navegação e a barra de pesquisa)
+.header-group-center {
+  display: flex; // Transforma em um container flex
+  align-items: center;
+  flex-grow: 1; // Permite que ele ocupe o espaço disponível
+  justify-content: center; // Centraliza a navegação e a barra de pesquisa dentro deste grupo
+  gap: 30px; // Espaçamento entre a nav e a barra de pesquisa
+}
+
+// Estilos para o container da barra de pesquisa
+.search-bar-container {
+  display: flex;
+  align-items: center;
+ 
+  width: 500px;
+  height: 35px;// Ocupa a largura total disponível dentro do max-width
+  background-color: #333; // Cor de fundo da barra
+  border-radius: 5px;
+  overflow: hidden; // Garante que bordas internas sejam arredondadas
+}
+
+// Estilos para o campo de input da busca
+#search-input {
+  padding: 0.8vh 1vw;
+  border: none; // Remove a borda padrão
+  background-color: transparent; // Fundo transparente para usar a cor do container
+  color: white;
+  font-size: 1.8vh;
+  flex-grow: 1; // Permite que o input ocupe a maior parte do espaço
+  outline: none; // Remove o contorno ao focar
+  min-width: 100px; // Largura mínima
+}
+
+// Estilos para o botão de busca
+#search-button {
+  padding: 0.8vh 1.5vw;
+  border: none;
+  background-color: rgb(77, 77, 190); // Cor de fundo do botão
+  color: white;
+   height: 35px;
+  font-size: 1.8vh;
+  cursor: pointer;
+  transition: background-color 0.3s; // Transição suave na cor de fundo
+  &:hover {
+    background-color: rgb(57, 57, 150); // Cor de fundo ao passar o mouse
+  }
+}
+
+// Se necessário, ajuste o margin-left: auto; que estava em nav.header-group-center
+// Agora que .header-group-center é um flex container, ele gerencia seu próprio espaçamento.
+#Pagina_Principal_Header nav ul {
+  margin-left: 0; 
+}
+.search-results-section {
+    border-top: white 2px solid;
+    background-image: url(/images/imgfundo3.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 73vh;
+    color: white;
+    font-family: Cormorant, Garamond;
+    padding: 4vh 6vw;
+
+    h2 {
+        font-size: 6vh;
+        font-family: Orbitron;
+        margin-bottom: 4vh;
+        text-align: center;
+    }
+}
+
+.professional-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); // Grid responsivo
+    gap: 30px; // Espaçamento entre os cartões
+    justify-content: center; // Centraliza os cartões na linha
+    padding: 20px 0;
+}
+
+.professional-card {
+    background: rgba(0, 0, 0, 0.7); // Fundo escuro semitransparente
+    border: 1px solid #444; // Borda sutil
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Sombra suave
+    transition: transform 0.2s ease-in-out; // Animação ao passar o mouse
+
+    &:hover {
+        transform: translateY(-5px); // Levanta o cartão ligeiramente ao passar o mouse
+    }
+
+    img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%; // Imagens de perfil circulares
+        object-fit: cover; // Garante que a imagem preencha o círculo
+        margin-bottom: 15px;
+        border: 2px solid rgb(121, 121, 235); // Borda colorida para a imagem de perfil
+    }
+
+    h3 {
+        font-family: Orbitron, sans-serif;
+        font-size: 2.8vh;
+        margin-bottom: 5px;
+        color: rgb(179, 179, 255); // Cor do nome do profissional
+
+        a {
+            color: inherit; // Mantém a cor do texto do h3
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline; // Sublinha ao passar o mouse no link do perfil
+            }
+        }
+    }
+
+    p {
+        font-size: 1.8vh;
+        margin-bottom: 5px;
+        color: #ccc; // Cor para descrições
+    }
+
+    .view-profile-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 8px 15px;
+        background-color: rgb(77, 77, 190); // Cor do botão "Ver Perfil"
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.6vh;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: rgb(57, 57, 150); // Cor do botão ao passar o mouse
+        }
+    }
 }
