@@ -26,11 +26,8 @@
   height: 82.5vh;
   width: 99vw;
   display: flex;
-  background-color: #234ED0;
+  background-image: url("images/imgfundo3.jpeg");
   margin: 0;
-  background-image: radial-gradient(white 1px, transparent 1px), radial-gradient(white 1px, transparent 1px);
-  background-size: 50px 50px;
-  background-position: 0 0, 25px 25px;
 }
 #Home p {
   text-align: justify;
